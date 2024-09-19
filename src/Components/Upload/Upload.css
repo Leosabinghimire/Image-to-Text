@@ -1,0 +1,50 @@
+.upload-area {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 80px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+
+.upload-icon {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.upload-area h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.upload-area p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.browse-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.paste-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.paste-button img {
+  width: 20px;
+  height: 20px;
+}

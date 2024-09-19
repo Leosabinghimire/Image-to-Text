@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header nav ul li {
+  margin-right: 20px;
+}
+
+.header nav ul li a {
+  font-size: 14px;
+}
+
+.header nav ul li a.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.user-actions {
+  display: flex;
+}
+
+.user-actions a {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.chat-link {
+  display: flex;
+  align-items: center;
+}
+
+.chat-link svg {
+  margin-right: 8px;
+}
+
+.pricing-link {
+  display: flex;
+  align-items: center;
+}
+
+.pricing-link svg {
+  margin-right: 8px;
+}
+
+.login-link {
+  display: flex;
+  align-items: center;
+}
+
+.login-link svg {
+  margin-right: 8px;
+}
