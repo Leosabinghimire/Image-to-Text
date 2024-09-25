@@ -6,6 +6,7 @@ const Upload = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [textResult, setTextResult] = useState("");
   const [isConverting, setIsConverting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const fileInputRef = useRef(null);
   const textAreaRef = useRef(null);
 
@@ -18,60 +19,55 @@ const Upload = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result); // Set the preview to the file's data URL
-        setTextResult(""); // Clear previous text result
+        setImagePreview(reader.result);
+        setTextResult("");
+        setErrorMessage(""); // Clear any previous error
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleClearAll = () => {
-    setImagePreview(null); // Clear the image preview
-    fileInputRef.current.value = null; // Reset the file input
-    setTextResult(""); // Clear text result
+    setImagePreview(null);
+    fileInputRef.current.value = null;
+    setTextResult("");
+    setErrorMessage(""); // Clear error message when clearing
   };
 
   const handleConvert = () => {
     if (!imagePreview) {
-      alert("No image to convert!");
+      setErrorMessage("No image to convert!"); // Set error message
       return;
     }
 
-    setIsConverting(true); // Show loading indicator
+    setIsConverting(true);
+    setErrorMessage(""); // Clear error message
 
-    // Use Tesseract.js to extract text from the image
-    Tesseract.recognize(
-      imagePreview,
-      "eng", // Use English language (you can configure other languages)
-      {
-        logger: (m) => console.log(m), // Optional logger
-      }
-    )
+    Tesseract.recognize(imagePreview, "eng", {
+      logger: (m) => console.log(m),
+    })
       .then(({ data: { text } }) => {
-        setTextResult(text); // Set the extracted text
-        setIsConverting(false); // Hide loading indicator
+        setTextResult(text);
+        setIsConverting(false);
       })
       .catch((error) => {
         console.error(error);
-        setIsConverting(false); // Hide loading indicator
+        setIsConverting(false);
+        setErrorMessage("Error occurred during conversion."); // Set error message on failure
       });
   };
 
   const handleCopy = () => {
     if (textAreaRef.current) {
-      textAreaRef.current.select(); // Select the text in the textarea
-      document.execCommand("copy"); // Copy the selected text to clipboard
-      alert("Text copied to clipboard!"); // Notify the user
+      textAreaRef.current.select();
+      document.execCommand("copy");
+      setErrorMessage(""); // Clear any error message when copying
     }
   };
 
   return (
     <div className="upload-area">
-      <img
-        src={imagePreview || "/"} // Use imagePreview if available, otherwise a default src
-        alt="Upload"
-        className="upload-icon"
-      />
+      <img src={imagePreview || "/"} alt="Upload" className="upload-icon" />
       <h3>Drop, Upload or Paste image</h3>
       <p>Supported formats: JPG, PNG, GIF, JFIF (JPEG), HEIC, PDF</p>
       <button className="browse-button" onClick={handleBrowseClick}>
@@ -82,9 +78,8 @@ const Upload = () => {
         ref={fileInputRef}
         style={{ display: "none" }}
         accept=".jpg, .jpeg, .png, .gif, .jfif, .heic, .pdf"
-        onChange={handleFileChange} // Handle file selection
+        onChange={handleFileChange}
       />
-
       <div className="action-buttons">
         <button className="clear-button" onClick={handleClearAll}>
           Clear All
@@ -97,14 +92,16 @@ const Upload = () => {
           {isConverting ? "Converting..." : "Convert"}
         </button>
       </div>
-
+      {isConverting && <div className="loader"></div>}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}{" "}
+      {/* Error message display */}
       {textResult && (
         <div className="text-result">
           <h4>Extracted Text:</h4>
           <textarea
             ref={textAreaRef}
             value={textResult}
-            onChange={(e) => setTextResult(e.target.value)} // Allow editing
+            onChange={(e) => setTextResult(e.target.value)}
             rows={10}
             className="text-area"
           />

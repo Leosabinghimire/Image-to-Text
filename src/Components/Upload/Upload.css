@@ -10,8 +10,12 @@
 }
 
 .upload-icon {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  /* Make it responsive */
+  max-width: 400px;
+  /* Set a maximum width */
+  height: auto;
+  /* Maintain aspect ratio */
   margin-bottom: 20px;
 }
 
@@ -92,6 +96,7 @@
   margin-bottom: 10px;
 }
 
+
 .copy-button {
   background-color: #000;
   color: #fff;
@@ -100,4 +105,32 @@
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  /* Size of the loader */
+  height: 40px;
+  /* Size of the loader */
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+  /* Center the loader */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
