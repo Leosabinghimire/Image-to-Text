@@ -94,7 +94,6 @@ const Upload = () => {
       </div>
       {isConverting && <div className="loader"></div>}
       {errorMessage && <div className="error-message">{errorMessage}</div>}{" "}
-      {/* Error message display */}
       {textResult && (
         <div className="text-result">
           <h4>Extracted Text:</h4>
