@@ -6,22 +6,27 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.header nav ul {
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
   display: flex;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.header nav ul li {
+.nav-links li {
   margin-right: 20px;
 }
 
-.header nav ul li a {
+.nav-links li a {
   font-size: 14px;
 }
 
-.header nav ul li a.active {
+.nav-links li a.active {
   color: #007bff;
   font-weight: bold;
 }
@@ -35,29 +40,67 @@
   font-size: 14px;
 }
 
-.chat-link {
-  display: flex;
-  align-items: center;
-}
-
-.chat-link svg {
-  margin-right: 8px;
-}
-
-.pricing-link {
-  display: flex;
-  align-items: center;
-}
-
-.pricing-link svg {
-  margin-right: 8px;
-}
-
+.chat-link,
+.pricing-link,
 .login-link {
   display: flex;
   align-items: center;
 }
 
+.chat-link svg,
+.pricing-link svg,
 .login-link svg {
   margin-right: 8px;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .user-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links li a {
+    font-size: 18px;
+  }
+
+  .user-actions a {
+    font-size: 16px;
+  }
 }

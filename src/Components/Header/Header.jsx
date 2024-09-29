@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import { FaTelegramPlane, FaDollarSign, FaSignInAlt } from "react-icons/fa";
+import {
+  FaTelegramPlane,
+  FaDollarSign,
+  FaSignInAlt,
+  FaBars,
+} from "react-icons/fa";
 
 export const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="header">
       <nav>
-        <ul>
+        <ul className={menuOpen ? "nav-links active" : "nav-links"}>
           <li>
             <a href="#" className="active">
               Image To Text
@@ -25,6 +36,9 @@ export const Header = () => {
             <a href="#">PDF To Text</a>
           </li>
         </ul>
+        <div className="hamburger" onClick={toggleMenu}>
+          <FaBars />
+        </div>
       </nav>
       <div className="user-actions">
         <a href="#" className="chat-link">
@@ -33,7 +47,7 @@ export const Header = () => {
         <a href="#" className="pricing-link">
           <FaDollarSign /> Pricing
         </a>
-        <a href="$" className="login-link">
+        <a href="#" className="login-link">
           <FaSignInAlt /> Login
         </a>
       </div>

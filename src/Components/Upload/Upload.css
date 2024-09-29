@@ -1,26 +1,23 @@
 .upload-area {
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
   text-align: center;
   border: 2px dashed #ccc;
   border-radius: 10px;
-  padding: 80px;
+  padding: 40px;
   margin-top: 20px;
   background-color: #f9f9f9;
 }
 
 .upload-icon {
   width: 100%;
-  /* Make it responsive */
-  max-width: 400px;
-  /* Set a maximum width */
+  max-width: 300px;
   height: auto;
-  /* Maintain aspect ratio */
   margin-bottom: 20px;
 }
 
 .upload-area h3 {
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
   margin-bottom: 10px;
 }
@@ -31,37 +28,17 @@
   margin-bottom: 20px;
 }
 
-.browse-button {
-  background-color: #f0f0f0;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 10px;
-  font-size: 14px;
-}
-
-.paste-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.paste-button img {
-  width: 20px;
-  height: 20px;
-}
-
+.browse-button,
 .clear-button,
-.convert-button {
+.convert-button,
+.copy-button {
   background-color: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
   font-size: 14px;
 }
 
@@ -72,6 +49,13 @@
 
 .action-buttons {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  margin-bottom: 10px;
 }
 
 .text-result {
@@ -83,7 +67,7 @@
 }
 
 .text-result h4 {
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
 }
 
@@ -96,12 +80,11 @@
   margin-bottom: 10px;
 }
 
-
 .copy-button {
   background-color: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;
@@ -117,17 +100,61 @@
   margin: 10px auto;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .error-message {
   color: red;
   margin-top: 10px;
+}
+
+/* Media query for smaller devices */
+@media (max-width: 768px) {
+  .upload-area {
+    padding: 30px;
+  }
+
+  .upload-icon {
+    max-width: 250px;
+  }
+
+  .browse-button,
+  .clear-button,
+  .convert-button,
+  .copy-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .text-area {
+    font-size: 12px;
+  }
+
+  .text-result h4 {
+    font-size: 14px;
+  }
+}
+
+/* Media query for very small devices (e.g., phones) */
+@media (max-width: 480px) {
+  .upload-area {
+    padding: 20px;
+  }
+
+  .upload-icon {
+    max-width: 200px;
+  }
+
+  .browse-button,
+  .clear-button,
+  .convert-button,
+  .copy-button {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .text-area {
+    font-size: 10px;
+  }
+
+  .text-result h4 {
+    font-size: 12px;
+  }
 }
