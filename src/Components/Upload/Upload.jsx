@@ -31,17 +31,17 @@ const Upload = () => {
     setImagePreview(null);
     fileInputRef.current.value = null;
     setTextResult("");
-    setErrorMessage(""); // Clear error message when clearing
+    setErrorMessage("");
   };
 
   const handleConvert = () => {
     if (!imagePreview) {
-      setErrorMessage("No image to convert!"); // Set error message
+      setErrorMessage("No image to convert!");
       return;
     }
 
     setIsConverting(true);
-    setErrorMessage(""); // Clear error message
+    setErrorMessage("");
 
     Tesseract.recognize(imagePreview, "eng", {
       logger: (m) => console.log(m),
@@ -53,7 +53,7 @@ const Upload = () => {
       .catch((error) => {
         console.error(error);
         setIsConverting(false);
-        setErrorMessage("Error occurred during conversion."); // Set error message on failure
+        setErrorMessage("Error occurred during conversion.");
       });
   };
 
@@ -61,7 +61,7 @@ const Upload = () => {
     if (textAreaRef.current) {
       textAreaRef.current.select();
       document.execCommand("copy");
-      setErrorMessage(""); // Clear any error message when copying
+      setErrorMessage("");
     }
   };
 
