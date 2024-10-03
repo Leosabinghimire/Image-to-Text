@@ -6,7 +6,7 @@ const Upload = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [textResult, setTextResult] = useState("");
   const [isConverting, setIsConverting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); // State for error message
+  const [errorMessage, setErrorMessage] = useState("");
   const fileInputRef = useRef(null);
   const textAreaRef = useRef(null);
 
@@ -21,7 +21,7 @@ const Upload = () => {
       reader.onloadend = () => {
         setImagePreview(reader.result);
         setTextResult("");
-        setErrorMessage(""); // Clear any previous error
+        setErrorMessage("");
       };
       reader.readAsDataURL(file);
     }
